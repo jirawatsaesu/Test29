@@ -1,9 +1,13 @@
 from django.urls import resolve
 from django.test import TestCase
-from quiz.views import home_page
+from quiz.views import home_page, quiz_page
 
 class HomePageTest(TestCase):
 
     def test_uses_home_template(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'home.html')
+
+    def test_uses_quiz_page_template(self):
+        response = self.client.get('/quiz/')
+        self.assertTemplateUsed(response, 'quiz.html')

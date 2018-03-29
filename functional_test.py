@@ -2,7 +2,7 @@ from selenium import webdriver
 import unittest
 import time
 
-class CalculatorTest(unittest.TestCase):
+class QuizTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -23,8 +23,8 @@ class CalculatorTest(unittest.TestCase):
         form = self.browser.find_element_by_id('quiz')
         inputbox = form.find_elements_by_tag_name('input')
         self.assertEqual(inputbox[0].get_attribute('name'), 'quiz')
-        self.assertEqual(inputbox[1].get_attribute('name'), 'True')
-        self.assertEqual(inputbox[2].get_attribute('name'), 'False')
+        self.assertEqual(inputbox[1].get_attribute('name'), 'true')
+        self.assertEqual(inputbox[2].get_attribute('name'), 'false')
         self.assertEqual(inputbox[3].get_attribute('value'), 'submit')
 
         time.sleep(0.5)
@@ -32,9 +32,6 @@ class CalculatorTest(unittest.TestCase):
 
         time.sleep(0.5)
         inputbox[2].click()
-
-        time.sleep(0.5)
-        inputbox[1].click()
 
         # Tom quit website
         time.sleep(0.5)
@@ -53,8 +50,8 @@ class CalculatorTest(unittest.TestCase):
         form = self.browser.find_element_by_id('quiz')
         inputbox = form.find_elements_by_tag_name('input')
         self.assertEqual(inputbox[0].get_attribute('name'), 'quiz')
-        self.assertEqual(inputbox[1].get_attribute('name'), 'True')
-        self.assertEqual(inputbox[2].get_attribute('name'), 'False')
+        self.assertEqual(inputbox[1].get_attribute('name'), 'true')
+        self.assertEqual(inputbox[2].get_attribute('name'), 'false')
         self.assertEqual(inputbox[3].get_attribute('value'), 'submit')
 
         time.sleep(0.5)

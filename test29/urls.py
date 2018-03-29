@@ -19,4 +19,5 @@ from quiz import views
 
 urlpatterns = [
     path('', views.home_page, name='home'),
+    path('quiz/', views.quiz_page, name='quiz')
 ]
