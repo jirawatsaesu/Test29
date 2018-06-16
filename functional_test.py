@@ -33,6 +33,9 @@ class QuizTest(unittest.TestCase):
         time.sleep(0.5)
         inputbox[2].click()
 
+        time.sleep(0.5)
+        inputbox[3].click()
+
         # Tom quit website
         time.sleep(0.5)
         self.browser.quit()

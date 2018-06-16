@@ -17,11 +17,23 @@ class QuizPageTest(TestCase):
         self.assertTemplateUsed(response, 'quiz.html')
 
 
+    def test_redirects_after_POST(self):
+        response = self.client.post('/quiz/', data={'quiz': '2+2*0+1=1', 'answer': False})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], '/quiz/')
+
+
 class AnswerPageTest(TestCase):
 
     def test_uses_answer_page_template(self):
         response = self.client.get('/answer/')
         self.assertTemplateUsed(response, 'answer.html')
+
+
+    def test_redirects_after_POST(self):
+        response = self.client.post('/answer/', data={'answer': True})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], '/answer/')
 
 
 class QuizModelTest(TestCase):
