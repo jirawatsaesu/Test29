@@ -23,8 +23,8 @@ class QuizTest(unittest.TestCase):
         form = self.browser.find_element_by_id('quiz')
         inputbox = form.find_elements_by_tag_name('input')
         self.assertEqual(inputbox[0].get_attribute('name'), 'quiz')
-        self.assertEqual(inputbox[1].get_attribute('value'), 'true')
-        self.assertEqual(inputbox[2].get_attribute('value'), 'false')
+        self.assertEqual(inputbox[1].get_attribute('value'), 'True')
+        self.assertEqual(inputbox[2].get_attribute('value'), 'False')
         self.assertEqual(inputbox[3].get_attribute('value'), 'submit')
 
         time.sleep(0.5)
@@ -49,8 +49,8 @@ class QuizTest(unittest.TestCase):
         # Jan see quiz "2+2*0+1=1" She think this answer is True
         form = self.browser.find_element_by_id('quiz')
         inputbox = form.find_elements_by_tag_name('input')
-        self.assertEqual(inputbox[0].get_attribute('value'), 'true')
-        self.assertEqual(inputbox[1].get_attribute('value'), 'false')
+        self.assertEqual(inputbox[0].get_attribute('value'), 'True')
+        self.assertEqual(inputbox[1].get_attribute('value'), 'False')
         self.assertEqual(inputbox[2].get_attribute('value'), 'submit')
 
         time.sleep(0.5)

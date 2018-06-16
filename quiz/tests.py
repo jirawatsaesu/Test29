@@ -29,10 +29,12 @@ class QuizModelTest(TestCase):
     def test_saving_and_retrieving_items(self):
         first_question = Quiz()
         first_question.question = '2+2*0+1=1'
+        first_question.answer = False
         first_question.save()
 
         second_question = Quiz()
         second_question.question = 'Tomatoes is vegetable'
+        second_question.answer = False
         second_question.save()
 
         saved_items = Quiz.objects.all()
@@ -41,4 +43,6 @@ class QuizModelTest(TestCase):
         first_saved_item = saved_items[0]
         second_saved_item = saved_items[1]
         self.assertEqual(first_saved_item.question, '2+2*0+1=1')
+        self.assertEqual(first_saved_item.answer, False)
         self.assertEqual(second_saved_item.question, 'Tomatoes is vegetable')
+        self.assertEqual(second_saved_item.answer, False)
