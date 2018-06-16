@@ -7,3 +7,7 @@ def home_page(request):
 
 def quiz_page(request):
     return render(request, 'quiz.html')
+
+
+def answer_page(request):
+    return render(request, 'answer.html')

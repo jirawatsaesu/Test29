@@ -1,6 +1,5 @@
 from django.urls import resolve
 from django.test import TestCase
-from quiz.views import home_page, quiz_page
 from quiz.models import Quiz
 
 
@@ -18,11 +17,11 @@ class QuizPageTest(TestCase):
         self.assertTemplateUsed(response, 'quiz.html')
 
 
-    def test_can_receive_a_GET_request(self):
-        response = self.client.get('/quiz/quiz=Man&true=true&false=false')
-        self.assertIn('Man', response.content.decode())
-        self.assertIn('true', response.content.decode())
-        self.assertIn('false', response.content.decode())
+class AnswerPageTest(TestCase):
+
+    def test_uses_answer_page_template(self):
+        response = self.client.get('/answer/')
+        self.assertTemplateUsed(response, 'answer.html')
 
 
 class QuizModelTest(TestCase):
@@ -33,7 +32,7 @@ class QuizModelTest(TestCase):
         first_question.save()
 
         second_question = Quiz()
-        second_question.question = 'You are reading this'
+        second_question.question = 'Tomatoes is vegetable'
         second_question.save()
 
         saved_items = Quiz.objects.all()
@@ -42,4 +41,4 @@ class QuizModelTest(TestCase):
         first_saved_item = saved_items[0]
         second_saved_item = saved_items[1]
         self.assertEqual(first_saved_item.question, '2+2*0+1=1')
-        self.assertEqual(second_saved_item.question, 'You are reading this')
+        self.assertEqual(second_saved_item.question, 'Tomatoes is vegetable')

@@ -19,5 +19,6 @@ from quiz import views
 
 urlpatterns = [
     path('', views.home_page, name='home'),
-    path('quiz/', views.quiz_page, name='quiz')
+    path('quiz/', views.quiz_page, name='quiz'),
+    path('answer/', views.answer_page, name='answer')
 ]
