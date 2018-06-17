@@ -17,5 +17,19 @@ def quiz_page(request):
 
 def answer_page(request):
     if request.method == 'POST':
+        quiz_id = request.POST.get('quiz_id')
+        ans = request.POST.get('answer')
+        current_quiz = Quiz.objects.get(id=quiz_id)
+
+        # Point Collected
+        if ans == str(current_quiz.answer):
+            current_quiz.correct_ans += 1
+        else:
+            current_quiz.wrong_ans += 1
+        current_quiz.save()
+
         return redirect('/answer/')
-    return render(request, 'answer.html')
+
+    # Show all questions
+    questions = Quiz.objects.all()
+    return render(request, 'answer.html', { 'questions': questions })

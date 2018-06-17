@@ -38,7 +38,7 @@ class AnswerPageTest(TestCase):
 
 class QuizModelTest(TestCase):
 
-    def test_saving_and_retrieving_items(self):
+    def test_create_and_saving_question(self):
         first_question = Quiz()
         first_question.question = '2+2*0+1=1'
         first_question.answer = False
@@ -58,3 +58,21 @@ class QuizModelTest(TestCase):
         self.assertEqual(first_saved_item.answer, False)
         self.assertEqual(second_saved_item.question, 'Tomatoes is vegetable')
         self.assertEqual(second_saved_item.answer, False)
+
+    def test_answer_question_and_points_collect(self):
+        first_question = Quiz()
+        first_question.question = '2+2*0+1=1'
+        first_question.answer = False
+        first_question.wrong_ans = 0
+        first_question.correct_ans = 0
+        first_question.save()
+
+        # 2 correct answer
+        first_question.correct_ans += 1
+        first_question.correct_ans += 1
+
+        # 1 wrong answer
+        first_question.wrong_ans += 1
+
+        self.assertEqual(first_question.correct_ans, 2)
+        self.assertEqual(first_question.wrong_ans, 1)

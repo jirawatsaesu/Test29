@@ -5,12 +5,17 @@
 
     <body>
         Answer a Quiz
-        <form id="quiz" method="POST">
-            1) 2+2*0+1=3<br>
-            <input type="radio" name="answer" value=True>True<br>
-            <input type="radio" name="answer" value=False>False<br>
-            <input type="submit" value="submit">
-            {% csrf_token %}
-        </form>
+        <br>
+        <br>
+        {% for question in questions %}
+            <form id="quiz" method="POST">
+                {{ forloop.counter  }}) {{ question.question }}
+                <input type="hidden" name="quiz_id" value="{{ question.id }}"><br>
+                <input type="radio" name="answer" value=True>True<br>
+                <input type="radio" name="answer" value=False>False<br>
+                <input type="submit" value="submit"><br>
+                {% csrf_token %}
+            </form>
+        {% endfor %}
     </body>
 </html>
