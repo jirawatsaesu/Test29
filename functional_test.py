@@ -10,7 +10,7 @@ class QuizTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_can_create_quiz(self):
+    def test_can_add_a_quiz(self):
         # Tom want to test other people knowledge about Math
         self.browser.get('http://localhost:8000/')
         quiz_link = self.browser.find_element_by_link_text('Quiz')
@@ -50,17 +50,18 @@ class QuizTest(unittest.TestCase):
         answer_link.click()
 
         # Jan see quiz "2+2*0+1=1" She think this answer is True
-        form = self.browser.find_element_by_id('quiz')
-        inputbox = form.find_elements_by_tag_name('input')
-        self.assertEqual(inputbox[0].get_attribute('value'), 'True')
-        self.assertEqual(inputbox[1].get_attribute('value'), 'False')
-        self.assertEqual(inputbox[2].get_attribute('value'), 'submit')
+        form = self.browser.find_elements_by_tag_name('form')
+        inputbox = form[0].find_elements_by_tag_name('input')
+        self.assertEqual(inputbox[0].get_attribute('value'), '1')
+        self.assertEqual(inputbox[1].get_attribute('value'), 'True')
+        self.assertEqual(inputbox[2].get_attribute('value'), 'False')
+        self.assertEqual(inputbox[3].get_attribute('value'), 'submit')
 
         time.sleep(0.5)
-        inputbox[0].click()
+        inputbox[1].click()
 
         time.sleep(0.5)
-        inputbox[2].click()
+        inputbox[3].click()
 
         # Jan quit website
         time.sleep(0.5)

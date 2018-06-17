@@ -8,7 +8,7 @@
         <br>
         <br>
         {% for question in questions %}
-            <form id="quiz" method="POST">
+            <form method="POST">
                 {{ forloop.counter  }}) {{ question.question }}
                 <input type="hidden" name="quiz_id" value="{{ question.id }}"><br>
                 <input type="radio" name="answer" value=True>True<br>
