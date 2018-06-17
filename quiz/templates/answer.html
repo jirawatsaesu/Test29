@@ -4,18 +4,16 @@
     </head>
 
     <body>
-        Answer a Quiz
-        <br>
-        <br>
+        <h1>Answer a Quiz</h1>
         {% for question in questions %}
-            <form method="POST">
-                {{ forloop.counter  }}) {{ question.question }}
-                <input type="hidden" name="quiz_id" value="{{ question.id }}"><br>
-                <input type="radio" name="answer" value=True>True<br>
-                <input type="radio" name="answer" value=False>False<br>
-                <input type="submit" value="submit"><br>
-                {% csrf_token %}
-            </form>
+        <form method="POST">
+            {{ forloop.counter  }}) {{ question.question }}
+            <input type="hidden" name="quiz_id" value="{{ question.id }}"><br>
+            <input type="radio" name="answer" value=True>True<br>
+            <input type="radio" name="answer" value=False>False<br>
+            <input type="submit" value="submit"><br>
+            {% csrf_token %}
+        </form>
         {% endfor %}
     </body>
 </html>
