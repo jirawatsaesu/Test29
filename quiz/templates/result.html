@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Quiz Result</title>
+    </head>
+
+    <body>
+        <center>
+            <h1>Quiz Result</h1>
+            <table id="result">
+                <tr>
+                    <td><h4>Sequence</h4></td>
+                    <td><h4>Question</h4></td>
+                    <td><h4>Answer</h4></td>
+                    <td><h4>Correct</h4></td>
+                    <td><h4>Wrong</h4></td>
+                </tr>
+                {% for question in questions %}
+                <tr>
+                    <td>{{ forloop.counter }}.</td>
+                    <td>{{ question.question }}</td>
+                    <td>{{ question.answer }}</td>
+                    <td>{{ question.correct_ans }}</td>
+                    <td>{{ question.wrong_ans }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </center>
+    </body>
+</html>
+

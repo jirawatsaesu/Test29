@@ -33,3 +33,8 @@ def answer_page(request):
     # Show all questions
     questions = Quiz.objects.all()
     return render(request, 'answer.html', { 'questions': questions })
+
+
+def result_page(request):
+    questions = Quiz.objects.all()
+    return render(request, 'result.html', { 'questions': questions })

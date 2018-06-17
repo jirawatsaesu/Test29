@@ -39,6 +39,13 @@ class AnswerPageTest(TestCase):
         self.assertTemplateUsed(response, 'answer.html')
 
 
+class ResultPageTest(TestCase):
+
+    def test_uses_result_page_template(self):
+        response = self.client.get('/result/')
+        self.assertTemplateUsed(response, 'result.html')
+
+
 class QuizModelTest(TestCase):
 
     def test_create_and_saving_question(self):

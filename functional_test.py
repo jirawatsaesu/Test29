@@ -67,6 +67,27 @@ class QuizTest(unittest.TestCase):
         time.sleep(0.5)
         self.browser.quit()
 
+    def test_can_see_a_result(self):
+        # Tom want to see result of his quiz "2+2*0+1=1"
+        self.browser.get('http://localhost:8000/')
+        answer_link = self.browser.find_element_by_link_text('Result')
+        self.assertEqual(answer_link.get_attribute('href'), 'http://localhost:8000/result/')
+
+        time.sleep(0.5)
+        answer_link.click()
+
+        # Tom see a score
+        table = self.browser.find_element_by_id('result')
+        rows = table.find_elements_by_tag_name('tr')
+        cols = rows[1].find_elements_by_tag_name('td')
+        self.assertEqual(cols[0].text, '1.')
+        self.assertEqual(cols[1].text, '2+2*0+1=1')
+        self.assertEqual(cols[2].text, 'False')
+
+        # Tom quit website
+        time.sleep(0.5)
+        self.browser.quit()
+
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
